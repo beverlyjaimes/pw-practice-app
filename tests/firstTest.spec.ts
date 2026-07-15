@@ -1,53 +1,39 @@
 import {test} from '@playwright/test'
 
-// test.beforeAll(() => {
-
-// })
 
 test.beforeEach(async ({page}) => {
       await page.goto('http://localhost:4200/')
     await page.getByText('Forms').click()
-
-})
-// test('the first test', async ({page}) => {
-  
-//     await page.getByText('Form Layouts').click()
-// })
-
-// test('navigate to datepicker', async ({page}) => {
-   
-//     await page.getByText('Datepicker').click()
-// })
-
-//try to avoid is not considered good practice 
-// test.afterAll()
-// test.afterEach()
-
-test.describe('suite 1', () => {
-    test.beforeEach(async ({page}) => {
-    await page.getByText('Forms').click()
-
-})
-test('the first test1', async ({page}) => {
-  
     await page.getByText('Form Layouts').click()
-})
-
 
 })
 
-test.describe.only('suite 2', () => {
-    test.beforeEach(async ({page}) => {
-    await page.getByText('Charts').click()
 
-})
-test('the first test2', async ({page}) => {
-  
-    await page.getByText('Echarts').click()
-})
+test('Locator syntax rules', async({page}) => {
+    //by Tag name
+   await page.locator('input').first().click()
 
-// test('navigate to datepicker', async ({page}) => {
-   
-//     await page.getByText('Datepicker').click()
-// })
+    //by iD
+    // await page.locator('#inputEmail').click()
+
+    //by Class
+    page.locator('.shape-rectangle')
+
+    //by attribute 
+    page.locator('[placeholder="Email"]')
+
+    //by entire class value(full)
+    page.locator('[class="input-full-width size-medium status-basic shape-rectangle nb-transition"]')
+
+    //combine selectors put them together without a space it will look for a match that has all 
+    page.locator('input[placeholder="Email"]')
+
+    //by xpath(NOT RECOMMENDED BY PLAYWRIGHT)
+    page.locator('//')
+
+    //by partial text match
+    page.locator(':text("Using")')
+
+    //by text exact match
+    page.locator(':text-is("Using the Grid")')
 })
