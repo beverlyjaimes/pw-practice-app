@@ -57,3 +57,15 @@ test ('User facing locators', async({page}) => {
    await page.getByTestId('whatever it is').first().click()
 })
 
+test ('Locating child elements', async({page}) =>{
+    await page.locator('nb-card nb-radio :text-is("Option 1")').click()
+    
+    await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 2")').click()
+
+    //combine
+
+    await page.locator('nb-card').getByRole('button', {name: 'Sign In'} ).first().click()
+
+    //can also use index with nth but NOT recommended 
+
+})
