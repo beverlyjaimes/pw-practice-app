@@ -37,3 +37,23 @@ test('Locator syntax rules', async({page}) => {
     //by text exact match
     page.locator(':text-is("Using the Grid")')
 })
+
+test ('User facing locators', async({page}) => {
+
+//    await page.getByRole('textbox', {name:"Email"}).first().click()
+
+//    await page.getByRole('button', {name: "Sign in"}).first().click()
+
+//    await page.getByLabel('Email').first().click()
+
+//    await page.getByPlaceholder('Jane Doe').first().click()
+
+//    await page.getByText('Using the Grid').first().click()
+
+   await page.getByTitle('Iot Dashboard').first().click()
+
+   //using source code you can add data-testd=""
+
+   await page.getByTestId('whatever it is').first().click()
+})
+
