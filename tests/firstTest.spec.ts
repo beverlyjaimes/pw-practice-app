@@ -66,6 +66,18 @@ test ('Locating child elements', async({page}) =>{
 
     await page.locator('nb-card').getByRole('button', {name: 'Sign In'} ).first().click()
 
-    //can also use index with nth but NOT recommended 
+    //can also use index with nth(3) but NOT recommended 
 
+})
+
+test ('Locating parent elements', async({page}) => {
+    // await page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name:"Email"}).click()
+    // await page.locator('nb-card', {has: page.locator('#InputEmail1')}).getByRole('textbox', {name:"Email"}).click()
+
+    await page.locator('nb-card').filter({hasText: "Basic form"}).getByRole('textbox', {name:"Email"}).click()
+    await page.locator('nb-card').filter({has: page.locator('.status-danger')}).getByRole('textbox', {name:"password"}).click()
+
+      await page.locator('nb-card').filter({has: page.locator('nb-checkbox')}).filter({hasText: "Sign In"}).click()
+
+      //can also be used but is NOT recommended .locator("..") to go one level up
 })
